@@ -1,21 +1,26 @@
 package com.company;
-import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
 
+
+    /*Modify your temperature exercise from lecture today so that your dailyAverageTemp array holds
+    Temperature objects instead of doubles.
+    +A Temperature should have (1) property which holds degrees in Fahrenheit.
+    +A Temperature should also have a convertToCelsius() method which will convert
+    a temperature from degrees Fahrenheit to degrees Celsius.
+    +Your program should allow the user to enter (1) week of daily average temperatures,
+    display all the daily average temperatures for a week,
+    and display the weekly average temperature. The user should have the option to display
+    temperatures in Fahrenheit or Celsius.*/
+
     public static void main(String[] args) {
-        double sum= 0.0;
-        double avg = 0.0;
-        int count = 0;
-        DecimalFormat df = new DecimalFormat("0.00");
+//        double sum= 0.0;
+//        double avg = 0.0;
+//        int count = 0;
 
         Scanner scan = new Scanner(System.in);
 
-
-	double[] dailyAverageTemp = new double[7];
-	double[] dailyAverageTempCelsius = new double[7];
-
+	  Temperature[] dailyAverageTemp = new Temperature[7];
 
 	for(int i  = 0; i < dailyAverageTemp.length; i++){
 
@@ -23,38 +28,40 @@ public class Main {
 
         double dailyTemp = scan.nextDouble();
 
-        dailyAverageTemp[i] = dailyTemp;
+        dailyAverageTemp[i] =  new Temperature();
 
-        sum += dailyAverageTemp[i];
-
-    }
+        dailyAverageTemp[i].setDegreesInFahrenheit(dailyTemp);
 
 
-	avg = (sum/dailyAverageTemp.length);
-
-	System.out.println("The daily temperatures are: ");
-
-	for (int i = 0; i <dailyAverageTemp.length; i++){
-
-	    System.out.print("Day " + (i + 1) + ": " + dailyAverageTemp[i] + " ");
 
     }
 
-    for(double temp : dailyAverageTemp)	{
 
-        double celsius = ((temp - 32) / 1.8);
+    System.out.println("Would you like to see your results in Fahrenheit or Celsius? \n 1. For Fahrenheit. 2. For Celsius");
+	int userChoice = scan.nextInt();
 
-        dailyAverageTempCelsius[count] = celsius;
+	if (userChoice == 1 ) {
 
-        count++;
-        
+        for (Temperature temp : dailyAverageTemp) {
+
+            double sum = 0.0;
+            sum += (temp.getDegreesInFahrenheit());
+
+            System.out.println(temp.tempsInFahrenheit());
+
+        }
+
+    } else {
+
+	    for (Temperature temp : dailyAverageTemp){
+
+
+	        System.out.println(temp.tempsInCelsius());
+
+
+        }
+
     }
-
-    System.out.println(Arrays.toString(dailyAverageTempCelsius));
-
-    System.out.println("\nThe average of the temperatures in Fahrenheit is: " + df.format(avg));
-
-
 
 
 
