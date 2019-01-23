@@ -6,7 +6,7 @@ public class Temperature {
 
     DecimalFormat df = new DecimalFormat("0.00");
 
-    double degreesInFahrenheit;
+    private double degreesInFahrenheit;
 
     public Temperature() {
     }
@@ -38,6 +38,6 @@ public class Temperature {
 
     public String tempsInCelsius(){
 
-       return "in celsius : " + df.format(calculateFahrenheitToCelsius(degreesInFahrenheit));
+       return "In celsius : " + df.format(calculateFahrenheitToCelsius(degreesInFahrenheit));
     }
 }

@@ -1,4 +1,5 @@
 package com.company;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 public class Main {
 
@@ -14,9 +15,10 @@ public class Main {
     temperatures in Fahrenheit or Celsius.*/
 
     public static void main(String[] args) {
-//        double sum= 0.0;
-//        double avg = 0.0;
+       double sum= 0.0;
+       double avg = 0.0;
 //        int count = 0;
+        DecimalFormat df = new DecimalFormat("0.##");
 
         Scanner scan = new Scanner(System.in);
 
@@ -37,25 +39,28 @@ public class Main {
     }
 
 
-    System.out.println("Would you like to see your results in Fahrenheit or Celsius? \n 1. For Fahrenheit. 2. For Celsius");
+    System.out.println("Would you like to see your results in Fahrenheit or Celsius? \n1. For Fahrenheit. 2. For Celsius");
 	int userChoice = scan.nextInt();
 
 	if (userChoice == 1 ) {
 
         for (Temperature temp : dailyAverageTemp) {
 
-            double sum = 0.0;
             sum += (temp.getDegreesInFahrenheit());
 
             System.out.println(temp.tempsInFahrenheit());
 
         }
 
+        avg = sum / dailyAverageTemp.length;
+
+        System.out.println("The average is : " + df.format(avg));
+
     } else {
 
 	    for (Temperature temp : dailyAverageTemp){
 
-
+	        
 	        System.out.println(temp.tempsInCelsius());
 
 
